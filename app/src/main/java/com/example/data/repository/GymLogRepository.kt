@@ -73,7 +73,14 @@ class GymLogRepository(
     }
 
     fun isCredentialsConfigured(): Boolean {
-        return getSpreadsheetId().isNotEmpty() && getServiceAccountJson().isNotEmpty()
+        val json = getServiceAccountJson().trim()
+        if (getSpreadsheetId().trim().isEmpty() || json.isEmpty()) return false
+        return try {
+            val jsonObj = org.json.JSONObject(json)
+            jsonObj.has("client_email") && jsonObj.has("private_key")
+        } catch (e: Exception) {
+            false
+        }
     }
 
     // --- Local DB Accessors (Flows for Live UI) ---
