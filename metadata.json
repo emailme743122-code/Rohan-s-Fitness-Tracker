@@ -1,0 +1,6 @@
+{
+  "name": "Gym & Food Log",
+  "description": "A gym companion app to log workouts and track food intake, synced with Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
